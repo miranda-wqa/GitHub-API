@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Automated API Tests using Newman
+
+# Controls when the workflow will run
+on: workflow_dispatch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  test-api:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Create dir
+        run: |
+          mkdir TestArtifact
+          
+
+      # Install node on runner
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+
+      # Install newman globally, the reporter for slack and the html extra reporter
+
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+
+      # Run the postman collection
+
+      - name: Run Tests
+        run: newman run "GITHUB_APITEST.json" -r cli,htmlextra --reporters-htmlextra-export newman/htmlreport.html
+          
+
+      # Upload the reports to html directory
+
+      - name: Output the Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Reports
+          path: newman
+        
+
+
+
+          
