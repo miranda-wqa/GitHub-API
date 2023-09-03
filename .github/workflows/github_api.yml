@@ -24,12 +24,19 @@ jobs:
           node-version: '16.x'
 
 
-      # Install newman globally, the reporter for slack and the html extra reporter
+      # Install newman globally, the reporter and the html extra reporter
 
       - name: Install newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
+
+
+- name: Debug
+  run: |
+    ls -l  # List files in the current directory for debugging
+    newman run "GITHUB_APITEST.json" -e "Env.json" -r htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html
+  shell: /usr/bin/bash -e {0}
 
 
       # Run the postman collection
