@@ -1,35 +1,67 @@
-name: build-test
-'on':
-  pull_request: null
-  push:
-    branches:
-      - master
-      - releases/*
+# This is a basic workflow to help you get started with Actions
+
+name: Automated API Tests using Newman CLI
+on: workflow_dispatch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  test-api:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - run: |
-          npm install
-          npm run all
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Run Newman
-        uses: ./
-        id: run-api-tests
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:          
+
+      # Install node on runner
+      - name: Install Node
+        uses: actions/setup-node@v3
         with:
-          collection: ./__tests__/collection.json
-          reporters: cli
-      - name: Run Newman - Failure Continue
-        uses: ./
-        id: run-api-tests-failure
-        with:
-          collection: ./__tests__/collection_failure.json
-          reporters: cli
-          suppressExitCode: 'true'
-      - name: Export Summary from Outputs
+          node-version: '17.x'
+
+
+      # Install newman globally, the reporter and the html extra reporter
+
+      - name: Install Newman
         run: |
-          echo ${{ steps.run-api-tests.outputs.summary }}
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Create dir
+        run: |
+          mkdir -p TestArtifact
+
+#------------------------------------------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Run API Tests
+        id: run-newman
+        uses: miranda-wqa/GitHub-API@v1
+        with:
+          collection: GITHUB_APITEST.json
+          reporters: cli
+      
+      - name: Output summary to console
+        run: echo ${{ steps.run-newman.outputs.summary }}
+
+#------------------------------------------------------------------------------
+
+      # Run the Postman collection
+
+      - name: Run Tests
+        run: |
+          newman run https://api.getpostman.com/collections/12932361-3c6fc8ff-f9bc-44b9-9979-6a60b2ccf12d?apikey=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 -e https://api.getpostman.com/environments/12932361-e0f2f6bb-d5d6-4449-8ed3-41c9b7648745?apikey=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 --suppress-exit-code -r htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html           
+
+      # Upload the reports to html directory
+
+      - name: Output the Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Reports
+          path: TestArtifact
+        
+
+
+
+          
