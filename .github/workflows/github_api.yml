@@ -13,14 +13,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Create dir
-        run: mkdir -p TestArtifact
+        run: |
+          mkdir -p TestArtifact
           
 
       # Install node on runner
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '17.x'
 
 
       # Install newman globally, the reporter and the html extra reporter
@@ -35,7 +36,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          newman run https://api.getpostman.com/collections/12932361-3c6fc8ff-f9bc-44b9-9979-6a60b2ccf12d?apikey=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 -e https://api.getpostman.com/environments/12932361-e0f2f6bb-d5d6-4449-8ed3-41c9b7648745?apikey=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 --suppress-exit-code -r cli,htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html           
+          newman run https://api.getpostman.com/collections/12932361-3c6fc8ff-f9bc-44b9-9979-6a60b2ccf12d?apikey=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 -e https://api.getpostman.com/environments/12932361-e0f2f6bb-d5d6-4449-8ed3-41c9b7648745?apikey=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 --suppress-exit-code -r htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html           
 
       # Upload the reports to html directory
 
