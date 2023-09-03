@@ -1,0 +1,439 @@
+{
+	"info": {
+		"_postman_id": "a5842d34-cd9b-4864-822b-bc845e50164a",
+		"name": "GITHUB_APITEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28444381"
+	},
+	"item": [
+		{
+			"name": "GET USER INFO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.clear();"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"miranda-wqa\",\n    \"id\": 136385877,\n    \"node_id\": \"U_kgDOCCEVVQ\",\n    \"avatar_url\": \"https://avatars.githubusercontent.com/u/136385877?v=4\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/miranda-wqa\",\n    \"html_url\": \"https://github.com/miranda-wqa\",\n    \"followers_url\": \"https://api.github.com/users/miranda-wqa/followers\",\n    \"following_url\": \"https://api.github.com/users/miranda-wqa/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/miranda-wqa/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/miranda-wqa/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/miranda-wqa/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/miranda-wqa/orgs\",\n    \"repos_url\": \"https://api.github.com/users/miranda-wqa/repos\",\n    \"events_url\": \"https://api.github.com/users/miranda-wqa/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/miranda-wqa/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false,\n    \"name\": null,\n    \"company\": Test,\n    \"blog\": \"\",\n    \"location\": null,\n    \"email\": null,\n    \"hireable\": null,\n    \"bio\": null,\n    \"twitter_username\": null,\n    \"public_repos\": 0,\n    \"public_gists\": 0,\n    \"followers\": 0,\n    \"following\": 0,\n    \"created_at\": \"2023-06-12T20:38:22Z\",\n    \"updated_at\": \"2023-06-14T16:40:45Z\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/users/miranda-wqa",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"miranda-wqa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST USERS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REPOSITORIES",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/repositories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"repositories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REPO USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users/miranda-wqa/repos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"miranda-wqa",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE REPO USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"TestPOSTMAN\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user/repos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE REPO USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/repos/miranda-wqa/TestPOSTMAN",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"repos",
+						"miranda-wqa",
+						"TestPOSTMAN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"blog\":\"https://github.com/blog\",\"name\":\"monalisa octocat\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST EMAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/user/emails",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD EMAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"emails\":[\"miranda420@gmail.com\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user/emails",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE EMAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"emails\":[\"miranda420@gmail.com\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user/emails",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "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",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.get(\"GitHub\");",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api.github.com",
+			"type": "string"
+		}
+	]
+}
