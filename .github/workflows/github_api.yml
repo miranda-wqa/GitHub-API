@@ -35,7 +35,8 @@ jobs:
       # Run the postman collection
 
       - name: Run Tests
-        run: newman run "GITHUB_APITEST.json" -e "Env.json" -r htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html
+        run: |
+          newman run "GITHUB_APITEST.json" -e "Env.json" -r htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html
           
 
       # Upload the reports to html directory
