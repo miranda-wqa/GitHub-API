@@ -37,7 +37,7 @@ jobs:
       
       - name: Run API Tests
         id: run-newman
-        uses: miranda-wqa/GitHub-API@v1
+        uses: miranda-wqa/GitHub-API
         with:
           collection: GITHUB_APITEST.json
           reporters: cli
