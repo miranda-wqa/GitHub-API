@@ -30,22 +30,7 @@ jobs:
       - name: Create dir
         run: |
           mkdir -p TestArtifact
-
-#------------------------------------------------------------------------------
-      - name: Checkout
-        uses: actions/checkout@v1
-      
-      - name: Run API Tests
-        id: run-newman
-        uses: miranda-wqa/GitHub-API
-        with:
-          collection: GITHUB_APITEST.json
-          reporters: cli
-      
-      - name: Output summary to console
-        run: echo ${{ steps.run-newman.outputs.summary }}
-
-#------------------------------------------------------------------------------
+          
 
       # Run the Postman collection
 
