@@ -14,4 +14,4 @@ jobs:
         run: postman login --with-api-key PMAK-64f4ab480ae091002a787c90-c3e6d85c8770b575c06ce08276ed74a1e6
       - name: Run API tests
         run: |
-          postman collection run "https://github.com/miranda-wqa/GitHub-API/GITHUB_APITEST_EXERCISE.json" -e "12932361-e498df6d-46b8-43c6-88b3-68b271b4a0c5" --integration-id "147465-${{ github.run_id }}"
+          postman collection run "${{ github.workspace }}/GITHUB_APITEST_EXERCISE.json" -e "12932361-e498df6d-46b8-43c6-88b3-68b271b4a0c5" --integration-id "147465-${{ github.run_id }}"
