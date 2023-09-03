@@ -1,13 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Automated API Tests using Newman
-
-# Controls when the workflow will run
+name: Automated API Tests using Newman CLI
 on: workflow_dispatch
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   test-api:
     runs-on: ubuntu-latest
 
