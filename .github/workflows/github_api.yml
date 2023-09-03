@@ -29,14 +29,13 @@ jobs:
       - name: Install newman
         run: |
           npm install -g newman
-          npm install -g newman-reporter-slackreporter
           npm install -g newman-reporter-htmlextra
 
 
       # Run the postman collection
 
       - name: Run Tests
-        run: newman run "GITHUB_APITEST.json" -r cli,htmlextra --reporters-htmlextra-export TestArtifact/htmlreport.html
+        run: newman run "GITHUB_APITEST.json" -r htmlextra --reporters-htmlextra-export TestArtifact/htmlreport.html
           
 
       # Upload the reports to html directory
