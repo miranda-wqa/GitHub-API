@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create dir
         run: |
-          mkdir TestArtifact
+          mkdir -p TestArtifact
           
 
       # Install node on runner
@@ -36,8 +36,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          newman run "GITHUB_APITEST.json" -e "Env.json" -r htmlextra --reporter-htmlextra-export TestArtifact/htmlreport.html
-          
+          https://api.getpostman.com/collections/12932361-3c6fc8ff-f9bc-44b9-9979-6a60b2ccf12d?apikey=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 -e https://api.getpostman.com/environments/12932361-e0f2f6bb-d5d6-4449-8ed3-41c9b7648745?apikey=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 --suppress-exit-code -r cli,htmlextra --reporter-htmlextra-export TestArtifacts/htmlreport.html           
 
       # Upload the reports to html directory
 
